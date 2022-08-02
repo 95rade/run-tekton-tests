@@ -87,5 +87,5 @@ Remote Bash
 ####
 
 Log In OCP cluster
-    #Open Connection     ${lustre-client}    # we don't use ssh
+    Open Connection     ${jumpbox}    # we don't use ssh
     Login               ${oc_username}      ${oc_password}
