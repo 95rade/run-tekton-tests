@@ -2,8 +2,8 @@
 
 # SUT cluster specific info
 ${sut_url}            https://api.ivc-systest.casa.dev:6443
-${sut_token}          sha256~hkHKMQO7PWA1D7HgF7N9zccQnIS4w2ymEji5aWyy4p8
-${oc_login_token}     --token=sha256~hkHKMQO7PWA1D7HgF7N9zccQnIS4w2ymEji5aWyy4p8 --server=https://api.ivc-systest.casa.dev:6443
+${sut_token}          sha256~Pzr3XR6n7Urmbb_Vjw03xDkNh79UyRmMSOLgZVrvEG8
+${oc_login_token}     --token=sha256~Pzr3XR6n7Urmbb_Vjw03xDkNh79UyRmMSOLgZVrvEG8 --server=https://api.ivc-systest.casa.dev:6443
 ${oc_username}        kubeadmin
 ${oc_password}        J8kor-zosNp-mdPyg-diRUy
 
