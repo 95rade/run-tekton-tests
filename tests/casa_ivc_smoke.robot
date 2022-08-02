@@ -7,7 +7,7 @@ Documentation
 ...                    Notice how connections are handled as part of the suite setup and
 ...                    teardown. This saves some time when executing several test cases.
 ...
-...                     Run the tests from cds-mpat directory on a target test system as:  run_cdslmo.sh <target-system>
+...                     Run the tests from cds-mpat directory on a target test system as:  run_sutx.sh <target-system>
 
 Library                 SSHLibrary
 Library                 Process
@@ -88,4 +88,4 @@ Remote Bash
 
 Log In OCP cluster
     Open Connection     ${jumpbox}    # we don't use ssh
-    Login               ${oc_username}      ${oc_password}
+    Login               ${ocp_user}      ${ocp_password}
