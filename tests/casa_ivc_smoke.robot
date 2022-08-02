@@ -13,7 +13,7 @@ Library                 SSHLibrary
 Library                 Process
 Library                 String
 Library                 OperatingSystem
-Suite Setup             Login OCP cluster
+Suite Setup             Log In OCP cluster
 Suite Teardown          Close All Connections
 Resource                ../config/${environment}.robot
 
