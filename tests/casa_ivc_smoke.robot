@@ -13,8 +13,8 @@ Library                 SSHLibrary
 Library                 Process
 Library                 String
 Library                 OperatingSystem
-#Suite Setup             Open Connection And Log In worker1
-#Suite Teardown          Close All Connections
+Suite Setup             Login OCP cluster
+Suite Teardown          Close All Connections
 Resource                ../config/${environment}.robot
 
 *** Variables ***
@@ -24,8 +24,8 @@ ${prompt}               "# "
 Verify all Nodes are in Ready state
     [Documentation]       Verify all k8s nodes are in Ready state
     [Tags]                test_case_id=
-    ${result}=            Run Process        oc    login    ${oc_login_token} 
-    Log to Console        ${\n}${result.stdout}
+    #${result}=            Run Process        oc    login    ${oc_login_token} 
+    #Log to Console        ${\n}${result.stdout}
     ${result2}=            Run Process        oc     get     nodes
     Log to Console        ${\n}${result2.stdout}
     Should Not Contain 	  ${result2.stdout}    Not-Ready    ignore_case=True
@@ -35,8 +35,8 @@ Verify all Nodes are in Ready state
 Verify no pods are in bad state
     [Documentation]     Verify no pods are in bad state
     [Tags]              test_case_id=
-    ${result}=          Run Process        oc     login    ${oc_login_token}
-    Log To Console      ${\n}${result.stdout}
+    #${result}=          Run Process        oc     login    ${oc_login_token}
+    #Log To Console      ${\n}${result.stdout}
     ${result2}=          Run Process        oc     get      pods    -A
     #Log to Console      ${\n}${result2.stdout}
     Should Not Contain  ${result2.stdout}                Error           ignore_case=True
@@ -47,8 +47,8 @@ Verify no pods are in bad state
 Verify smf operator is running in the cluster
     [Documentation]     Verify smf operator is running in the cluster
     [Tags]              test_case_id=
-    ${result}=          Run Process        oc     login    ${oc_login_token}
-    Log To Console      ${\n}${result.stdout}
+    #${result}=          Run Process        oc     login    ${oc_login_token}
+    #Log To Console      ${\n}${result.stdout}
     ${result2}=          Run Process        oc     get      pods    -A  |  grep -i casa-smf  shell=True
     Log to Console      ${\n}${result2.stdout}
     Should Contain      ${result2.stdout}              casa-smf           ignore_case=True
@@ -86,6 +86,6 @@ Remote Bash
 
 ####
 
-Log In k8s cluster
+Log In OCP cluster
     #Open Connection     ${lustre-client}    # we don't use ssh
     Login               ${oc_username}      ${oc_password}
