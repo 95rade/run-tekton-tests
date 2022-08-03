@@ -10,7 +10,7 @@ ${oc_password}        J8kor-zosNp-mdPyg-diRUy
 ##########
 # Jump Box 
 ##########
-${jumpbox}          10\.133\.133\.14
+${jumpbox}          10.133.133.14
 ${ocp_user}         ivc
 ${ocp_password}     ivc!
 
