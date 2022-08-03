@@ -26,7 +26,7 @@ Verify all Nodes are in Ready state
     [Tags]                test_case_id=
     #${result}=            Run Process        oc    login    ${oc_login_token} 
     #Log to Console        ${\n}${result.stdout}
-    ${result2}=            Run Process        oc     get     nodes
+    ${result2}=            Run Process        kubectl     get     nodes
     Log to Console        ${\n}${result2.stdout}
     Should Not Contain 	  ${result2.stdout}    Not-Ready    ignore_case=True
     Should Match Regexp   ${result2.stdout}    node-[1-9]
@@ -37,7 +37,7 @@ Verify no pods are in bad state
     [Tags]              test_case_id=
     #${result}=          Run Process        oc     login    ${oc_login_token}
     #Log To Console      ${\n}${result.stdout}
-    ${result2}=          Run Process        oc     get      pods    -A
+    ${result2}=          Run Process        kubectl     get      pods    -n casa
     #Log to Console      ${\n}${result2.stdout}
     Should Not Contain  ${result2.stdout}                Error           ignore_case=True
     Should Not Contain  ${result2.stdout}                Terminating     ignore_case=True
@@ -49,7 +49,7 @@ Verify smf operator is running in the cluster
     [Tags]              test_case_id=
     #${result}=          Run Process        oc     login    ${oc_login_token}
     #Log To Console      ${\n}${result.stdout}
-    ${result2}=          Run Process        oc     get      pods    -A  |  grep -i casa-smf  shell=True
+    ${result2}=          Run Process        kubectl     get      pods    -A  |  grep -i casa-smf  shell=True
     Log to Console      ${\n}${result2.stdout}
     Should Contain      ${result2.stdout}              casa-smf           ignore_case=True
 
