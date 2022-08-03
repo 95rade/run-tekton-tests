@@ -13,7 +13,7 @@ Library                 SSHLibrary
 Library                 Process
 Library                 String
 Library                 OperatingSystem
-Suite Setup             Log In OCP cluster
+Suite Setup             Open Connection and Log In OCP Cluster
 Suite Teardown          Close All Connections
 Resource                ../config/${environment}.robot
 
@@ -86,6 +86,6 @@ Remote Bash
 
 ####
 
-Log In OCP cluster
-    Open Connection     ${jumpbox}    # we don't use ssh
+Open Connection and Log In OCP Cluster
+    Open Connection     ${jumpbox}      # we don't use ssh
     Login               ${ocp_user}      ${ocp_password}
