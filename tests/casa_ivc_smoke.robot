@@ -24,12 +24,10 @@ ${prompt}               "# "
 Verify all Nodes are in Ready state
     [Documentation]       Verify all k8s nodes are in Ready state
     [Tags]                test_case_id=
-    #${result}=            Run Process        oc    login    ${oc_login_token} 
-    #Log to Console        ${\n}${result.stdout}
-    ${result2}=            Execute Command        kubectl     get     nodes
-    Log to Console        ${\n}${result2.stdout}
-    Should Not Contain 	  ${result2.stdout}    Not-Ready    ignore_case=True
-    Should Match Regexp   ${result2.stdout}    node-[1-9]
+    ${result2}=           Execute Command        kubectl     get     nodes
+    Log to Console        ${\n}${result2}
+    Should Not Contain 	  ${result2}    Not-Ready    ignore_case=True
+    Should Match Regexp   ${result2}    node-[1-9]
 
 
 Verify no pods are in bad state
@@ -37,21 +35,21 @@ Verify no pods are in bad state
     [Tags]              test_case_id=
     #${result}=          Run Process        oc     login    ${oc_login_token}
     #Log To Console      ${\n}${result.stdout}
-    ${result2}=          Execute Command        kubectl     get      pods    -n casa
-    #Log to Console      ${\n}${result2.stdout}
-    Should Not Contain  ${result2.stdout}                Error           ignore_case=True
-    Should Not Contain  ${result2.stdout}                Terminating     ignore_case=True
-    Should Not Contain  ${result2.stdout}                ContainerCreating    ignore_case=True
-    Should Not Contain  ${result2.stdout}                CrashLoopBackOff     ignore_case=True
+    ${result2}=          Execute Command        oc     get      pods    -n casa
+    #Log to Console      ${\n}${result2}
+    Should Not Contain  ${result2}                Error           ignore_case=True
+    Should Not Contain  ${result2}                Terminating     ignore_case=True
+    Should Not Contain  ${result2}                ContainerCreating    ignore_case=True
+    Should Not Contain  ${result2}                CrashLoopBackOff     ignore_case=True
 
 Verify smf operator is running in the cluster
     [Documentation]     Verify smf operator is running in the cluster
     [Tags]              test_case_id=
     #${result}=          Run Process        oc     login    ${oc_login_token}
     #Log To Console      ${\n}${result.stdout}
-    ${result2}=          Execute Command        kubectl     get      pods    -A  |  grep -i casa-smf  shell=True
-    Log to Console      ${\n}${result2.stdout}
-    Should Contain      ${result2.stdout}              casa-smf           ignore_case=True
+    ${result2}=          Execute Command        oc     get      pods    -A  |  grep -i casa-smf  shell=True
+    Log to Console      ${\n}${result2}
+    Should Contain      ${result2}              casa-smf           ignore_case=True
 
 #Example put_file_on_the_remote_machine :)     # not tracked
 #    # GIVEN
