@@ -24,9 +24,9 @@ ${prompt}               "# "
 Execute ivc smoke test suite
     [Documentation]       Execute ivc smoke test suite
     [Tags]                test_case_id=
-    ${result}=            Execute Command    cd /public/python/api/casa/Tests/rade && ls -al
+    ${result}=            Execute Command    cd /public/python/api/casa/Tests/rade && ls -al rm*
     Log to Console        ${\n}${result}
-    ${result}=            Run Process        python3    rm_OCP-4_GZ.py  | tee rm_OCP-4_$(date +"%m_%d_%Y").log   shell=True  output_encoding=UTF-8
+    ${result}=            Run Process        python3    rm_ivc-systest_run.py  | tee rm_ivc-systest_run.py_$(date +"%m_%d_%Y").log   shell=True  output_encoding=UTF-8
     
     #Log to Console        ${\n}${result.rc}
     #Should be equal as integers      ${result.rc}  0
