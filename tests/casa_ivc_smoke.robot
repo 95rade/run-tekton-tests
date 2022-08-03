@@ -13,7 +13,7 @@ Library                 SSHLibrary
 Library                 Process
 Library                 String
 Library                 OperatingSystem
-Suite Setup             Open Connection and Log In OCP Cluster
+#Suite Setup             Open Connection and Log In OCP Cluster
 Suite Teardown          Close All Connections
 Resource                ../config/${environment}.robot
 
@@ -24,6 +24,7 @@ ${prompt}               "# "
 Verify all Nodes are in Ready state
     [Documentation]       Verify all k8s nodes are in Ready state
     [Tags]                test_case_id=
+    Open Connection and Log In OCP Cluster
     ${result2}=           Execute Command        oc     get     nodes
     Log to Console        ${\n}${result2}
     Should Not Contain 	  ${result2}    Not-Ready    ignore_case=True
