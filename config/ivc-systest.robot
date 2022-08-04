@@ -14,6 +14,13 @@ ${jumpbox}          10.133.133.14
 ${ocp_user}         ivc
 ${ocp_password}     ivc!
 
+###########
+# GZ server
+###########
+${gz_server}        172.0.15.122
+${gz_user}
+${gz_password}      
+
 ${prompt}               ]#              #  [root@
 
 #
