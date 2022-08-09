@@ -24,11 +24,11 @@ ${prompt}               "# "
 Execute ivc smoke test suite
     [Documentation]       Execute ivc smoke test suite
     [Tags]                test_case_id=
-    ${result}=            Execute Command    cd /public/python/api/casa/Tests/rade && ls -al rm*
-    Log to Console        ${\n}${result}
-    ${result}=            Run Process        python3    rm_ivc-systest_run.py  | tee rm_ivc-systest_run.py_$(date +"%m_%d_%Y").log   shell=True  output_encoding=UTF-8
+    #${result}=            Execute Command    cd /public/python/api/casa/Tests/rade && ls -al rm*
+    #Log to Console        ${\n}${result}
+    ${result}=            Run Process        python3 rm_ivc-systest_attach.py  shell=True   shell=True  output_encoding=UTF-8
     
-    #Log to Console        ${\n}${result.rc}
+    Log to Console        ${\n}${result}
     #Should be equal as integers      ${result.rc}  0
 
 #Example put_file_on_the_remote_machine :)     # not tracked
